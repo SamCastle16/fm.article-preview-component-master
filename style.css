@@ -26,7 +26,7 @@ main {
   max-width: 56rem;
   min-height: 22rem;
   background-color: #fff;
-  overflow: visible;
+  /* overflow: hidden; */
   display: flex;
   border-radius: 10px;
   margin: 0 2rem;
@@ -42,6 +42,7 @@ main {
   height: 100%;
   object-fit: cover;
   object-position: 0;
+  border-radius: 10px 0 0 10px;
 }
 
 .info-container {
@@ -62,7 +63,7 @@ main {
 
 .info-container p {
   color: var(--color-paragraph);
-  font-size: 1rem;
+  font-size: 13px;
   margin-bottom: 1.5rem;
   line-height: 1.8rem;
 }
@@ -79,8 +80,8 @@ main {
 }
 
 .user-avatar {
-  width: 3rem;
-  height: 3rem;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   align-items: center;
 }
@@ -95,14 +96,14 @@ main {
 
 .user-text span:first-child {
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 13px;
   color: var(--color-title);
   margin-bottom: .1rem;
 }
 
 .user-text span:last-child {
   color: var(--color-date);
-  font-size: 1rem;
+  font-size: 13px;
 }
 
 .container-icon-share {
@@ -131,7 +132,7 @@ main {
 .share-container {
   position: absolute;
   bottom: 7.5rem;
-  right: -6rem;
+  right: -6.2rem;
   width: 60%;
   height: 0;
   background-color: var(--color-title);
@@ -140,9 +141,10 @@ main {
   justify-content: flex-start;
   align-items: center;
   gap: 1.2rem;
-  opacity: 0;
-  transition: .3s;
+  transition: all .3s;
   border-radius: 10px;
+  /* visibility: hidden; */
+  opacity: 0;
 }
 
 .share-container::after {
@@ -151,13 +153,14 @@ main {
   height: 2rem;
   background-color: var(--color-title);
   position: absolute;
-  bottom: -9px;
-  left: 9.3rem;
-  transform: rotate(45deg);
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -60%) rotate(45deg);
 }
 
 .share-container--active-mobile {
   opacity: 1;
+  /* visibility: visible; */
   height: 24%;
 }
 
@@ -190,22 +193,6 @@ main {
     font-size: 12px;
   }
 
-  /* .share-container {
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: var(--color-title);
-    padding: 0 3rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.2rem;
-    opacity: 0;
-    transition: .3s;
-  } */
-
   main {
     flex-direction: column;
     margin: 6rem 2rem;
@@ -217,6 +204,7 @@ main {
     /* min-height: 8rem; */
     object-fit: cover;
     /* object-position: 0; */
+    border-radius: 10px 10px 0 0px;
   }
 
   .container-img {
@@ -257,7 +245,7 @@ main {
     gap: 1.2rem;
     opacity: 0;
     transition: .3s;
-    border-radius: 0;
+    border-radius: 0 0 10px 10px;
   }
   
   .share-container--active-mobile {
