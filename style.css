@@ -26,7 +26,6 @@ main {
   max-width: 56rem;
   min-height: 22rem;
   background-color: #fff;
-  /* overflow: hidden; */
   display: flex;
   border-radius: 10px;
   margin: 0 2rem;
@@ -52,6 +51,7 @@ main {
   flex-direction: column;
   position: relative;
   overflow: visible;
+  font-size: 13px;
 }
 
 .info-container h1 {
@@ -63,7 +63,7 @@ main {
 
 .info-container p {
   color: var(--color-paragraph);
-  font-size: 13px;
+  font-size: 1em;
   margin-bottom: 1.5rem;
   line-height: 1.8rem;
 }
@@ -89,21 +89,25 @@ main {
 .user-text {
   display: flex;
   flex-direction: column;
-  font-size: .85rem;
+  font-size: 13px;
   justify-content: center;
   margin-left: 1.5rem;
 }
 
 .user-text span:first-child {
   font-weight: 700;
-  font-size: 13px;
+  font-size: 1em;
   color: var(--color-title);
   margin-bottom: .1rem;
 }
 
 .user-text span:last-child {
   color: var(--color-date);
-  font-size: 13px;
+  font-size: 1em;
+}
+
+.share-option {
+  position: relative;
 }
 
 .container-icon-share {
@@ -116,7 +120,7 @@ main {
   border-radius: 50%;
   cursor: pointer;
   position: relative;
-  z-index: 100;
+  z-index: 200;
 }
 
 .icon-share {
@@ -130,38 +134,38 @@ main {
 }
 
 .share-container {
+  --scale:0;
   position: absolute;
-  bottom: 7.5rem;
-  right: -6.2rem;
-  width: 60%;
-  height: 0;
+  bottom: calc(100% + 25px);
+  left: 50%;
+  transform: translate(-50%, 0) scale(var(--scale));
+  transform-origin: bottom;
   background-color: var(--color-title);
-  padding: 0 3rem;
+  padding: 17px 40px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 1.2rem;
   transition: all .3s;
   border-radius: 10px;
-  /* visibility: hidden; */
-  opacity: 0;
+  visibility: hidden;
 }
 
 .share-container::after {
   content: '';
-  width: 2rem;
-  height: 2rem;
+  width: 20px;
+  height: 20px;
   background-color: var(--color-title);
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translate(-50%, -60%) rotate(45deg);
+  display: flex;
 }
 
 .share-container--active-mobile {
-  opacity: 1;
-  /* visibility: visible; */
-  height: 24%;
+  --scale:1;
+  visibility: visible;
 }
 
 .share-container span {
@@ -182,28 +186,20 @@ main {
   transform: translateY(-4px);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   :root {
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  :root {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
 
   main {
     flex-direction: column;
     margin: 6rem 2rem;
-    /* height: 80%; */
+    overflow: hidden;
   }
 
   .container-img  img {
     width: 100%;
-    /* min-height: 8rem; */
     object-fit: cover;
-    /* object-position: 0; */
     border-radius: 10px 10px 0 0px;
   }
 
@@ -231,26 +227,27 @@ main {
     line-height: 1.8rem;
   }
 
+  .share-option {
+    position: initial;
+  }
+
   .share-container {
-    position: absolute;
-    bottom: 0px;
+    --scale:1;
+    --translateX: 0;
+    --translateY: 100%;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 0;
-    background-color: var(--color-title);
-    padding: 0 3rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.2rem;
-    opacity: 0;
-    transition: .3s;
+    transform: translate(var(--translateX),var(--translateY)) scale(var(--scale));
+    padding: 28px 40px;
     border-radius: 0 0 10px 10px;
+    visibility: hidden;
+    z-index: 0;
   }
   
   .share-container--active-mobile {
-    opacity: 1;
-    height: 24%;
+    --translateY: 0;
+    visibility: visible;
   }
 
   .share-container::after {
